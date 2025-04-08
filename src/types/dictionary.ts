@@ -17,14 +17,32 @@ export interface Meaning {
 
 export interface DictionaryEntry {
   word: string;
-  phonetic: string;
-  phonetics: Phonetic[];
-  origin?: string;
-  meanings: Meaning[];
+  phonetic?: string;
+  meanings: {
+    partOfSpeech: string;
+    definitions: {
+      definition: string;
+      example?: string;
+    }[];
+  }[];
 }
 
 export interface DictionaryError {
   title: string;
   message: string;
   resolution: string;
-} 
+}
+
+export interface DicionarioAbertoEntry {
+  word: string;
+  sense: number;
+  xml: string;
+  preview?: string;
+}
+
+export interface WordOfTheDay {
+  word: string;
+  xml: string;
+}
+
+export type SearchType = 'normal' | 'prefix' | 'suffix' | 'infix' | 'near' | 'random' | 'wotd'; 
